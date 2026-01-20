@@ -1,12 +1,12 @@
-$(function () {
+$(window).on('load', function () {
 
-  const width = $("#book").width();
-  const height = $("#book").height();
+  const book = $("#book");
 
-  $("#book").turn({
-    width: width,
-    height: height,
+  book.turn({
+    width: book.width(),
+    height: book.height(),
     autoCenter: true
   });
 
 });
+
