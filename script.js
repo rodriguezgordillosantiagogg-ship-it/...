@@ -1,8 +1,8 @@
-$(document).ready(function () {
+window.addEventListener("load", function () {
 
   $("#book").turn({
-    width: $("#book").width(),
-    height: $("#book").height(),
+    width: document.getElementById("book").offsetWidth,
+    height: document.getElementById("book").offsetHeight,
     autoCenter: true
   });
 
