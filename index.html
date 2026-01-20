@@ -2,17 +2,26 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Prueba Audio</title>
+  <title>Libro con música</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Prueba de audio</h1>
+  <!-- ZONA TÁCTIL INVISIBLE -->
+  <div id="activar"></div>
 
-  <audio controls>
+  <!-- AUDIO -->
+  <audio id="audio" loop preload="auto">
     <source src="cancion.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio.
   </audio>
 
+  <div class="mensaje">
+    Toca una vez la pantalla 🎶
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
