@@ -1,8 +1,11 @@
-window.addEventListener("load", function () {
+$(function () {
+
+  const width = $("#book").width();
+  const height = $("#book").height();
 
   $("#book").turn({
-    width: document.getElementById("book").offsetWidth,
-    height: document.getElementById("book").offsetHeight,
+    width: width,
+    height: height,
     autoCenter: true
   });
 
