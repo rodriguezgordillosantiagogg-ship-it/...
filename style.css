@@ -64,7 +64,7 @@ body {
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
   #book {
-    width: 95%;
-    height: 90vh; /* ocupa el 90% de la altura de la pantalla del móvil */
+    width: 100vw;  /* ocupa todo el ancho de la pantalla */
+    height: 100vh; /* ocupa todo el alto de la pantalla */
   }
 }
