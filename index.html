@@ -2,26 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Libro con música</title>
+  <title>Libro interactivo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- jQuery (OBLIGATORIO para turn.js) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-  <!-- ZONA TÁCTIL INVISIBLE -->
-  <div id="activar"></div>
+  <!-- CAPA PARA ACTIVAR AUDIO -->
+  <div id="activar">
+    <div class="mensaje">Toca una vez la pantalla 🎶</div>
+  </div>
 
   <!-- AUDIO -->
   <audio id="audio" loop preload="auto">
     <source src="cancion.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="mensaje">
-    Toca una vez la pantalla 🎶
+  <!-- DISCO -->
+  <div class="disco"></div>
+
+  <!-- LIBRO -->
+  <div id="book">
+    <div class="page portada">
+      <img src="portada.jpg" alt="Portada">
+    </div>
+    <div class="page">Página 1</div>
+    <div class="page">Página 2</div>
+    <div class="page">Página 3</div>
+    <div class="page">Página 4</div>
   </div>
 
+  <!-- JS -->
+  <script src="turn.min.js"></script>
   <script src="script.js"></script>
+
 </body>
 </html>
 
