@@ -1,42 +1,46 @@
-function tamañoLibro() {
+function configLibro() {
   let w = window.innerWidth;
   let h = window.innerHeight;
 
   if (w < 768) {
+    // MÓVIL: una página
     return {
       width: w * 0.9,
-      height: h * 0.65
+      height: h * 0.7,
+      display: "single"
     };
   } else {
+    // PC: doble página
     return {
-      width: 800,
-      height: 500
+      width: 900,
+      height: 550,
+      display: "double"
     };
   }
 }
 
 $(document).ready(function () {
 
-  let size = tamañoLibro();
+  let cfg = configLibro();
 
   $("#book").turn({
-    width: size.width,
-    height: size.height,
-    autoCenter: true
+    width: cfg.width,
+    height: cfg.height,
+    autoCenter: true,
+    display: cfg.display
   });
 
-  // Ajustar tamaño al cambiar pantalla
+  // Reajustar al cambiar tamaño o rotar móvil
   $(window).on("resize", function () {
-    let size = tamañoLibro();
-    $("#book").turn("size", size.width, size.height);
+    let cfg = configLibro();
+    $("#book").turn("display", cfg.display);
+    $("#book").turn("size", cfg.width, cfg.height);
   });
 
-  /* =========================
-     PASAR PÁGINA CON CLIC
-     ========================= */
-  $("#book").on("click", function (e) {
-    let x = e.pageX;
-    let mitad = $(window).width() / 2;
+  // CLIC IZQUIERDA / DERECHA
+  $("#book").on("click touchstart", function (e) {
+    let x = e.pageX || e.originalEvent.touches[0].pageX;
+    let mitad = window.innerWidth / 2;
 
     if (x > mitad) {
       $("#book").turn("next");
@@ -45,9 +49,7 @@ $(document).ready(function () {
     }
   });
 
-  /* =========================
-     ACTIVAR MÚSICA (FIJO)
-     ========================= */
+  // MÚSICA (se activa con el primer gesto)
   let musica = document.getElementById("musica");
   musica.volume = 0.7;
 
