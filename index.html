@@ -26,24 +26,10 @@
     <div class="page">Página 4</div>
   </div>
 
-  <!-- CONTROLES DEL LIBRO -->
-  <div class="controls">
-    <button id="prev">Anterior</button>
-    <button id="next">Siguiente</button>
-  </div>
-
-  <!-- REPRODUCTOR -->
-  <div class="player">
-    <div id="disc" class="disc"></div>
-
-    <button id="playBtn">▶️</button>
-    <button id="muteBtn">🔊</button>
-
-    <!-- AUDIO CON LOOP -->
-    <audio id="audio" loop>
-      <source src="cancion.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+  <!-- AUDIO AUTOMÁTICO EN LOOP -->
+  <audio id="audio" autoplay loop muted>
+    <source src="cancion.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- JS -->
   <script src="script.js"></script>
