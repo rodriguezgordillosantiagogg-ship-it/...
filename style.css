@@ -31,22 +31,41 @@ body {
 /* LIBRO */
 #book {
   margin: auto;
+  width: 100%;
+  max-width: 900px; /* tamaño máximo en PC */
+  height: auto;
+  aspect-ratio: 16/10; /* mantiene proporción en móviles */
 }
 
 /* PÁGINAS */
 .page {
-  background: white;
+  width: 100%;
+  height: 100%;
+  background: black; /* cambia a blanco si prefieres */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
-  cursor: pointer;
-  user-select: none;
+  overflow: hidden;
+}
+
+/* IMÁGENES EN PÁGINAS */
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* muestra la imagen completa */
 }
 
 /* PORTADA */
 .portada img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* portada llena toda la hoja */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  #book {
+    max-width: 95%;
+    aspect-ratio: 3/4; /* proporción vertical en móviles */
+  }
 }
