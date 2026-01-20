@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ===== AUDIO ===== */
   const audio = document.getElementById("audio");
 
-  // Primer clic en cualquier parte activa el sonido
+  // Primer clic en cualquier parte → activa el sonido
   document.addEventListener("click", () => {
     audio.muted = false;
   }, { once: true });
