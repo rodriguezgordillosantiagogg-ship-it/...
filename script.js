@@ -1,44 +1,48 @@
-/* ===== LIBRO ===== */
-const pageFlip = new St.PageFlip(
-  document.getElementById("book"),
-  {
-    width: 350,
-    height: 500,
-    size: "stretch",
-    maxShadowOpacity: 0.5,
-    showCover: true,
-    mobileScrollSupport: false
-  }
-);
+document.addEventListener("DOMContentLoaded", () => {
 
-pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+  /* ===== LIBRO ===== */
+  const pageFlip = new St.PageFlip(
+    document.getElementById("book"),
+    {
+      width: 350,
+      height: 500,
+      size: "stretch",
+      maxShadowOpacity: 0.5,
+      showCover: true,
+      mobileScrollSupport: false
+    }
+  );
 
-document.getElementById("next").onclick = () => pageFlip.flipNext();
-document.getElementById("prev").onclick = () => pageFlip.flipPrev();
+  pageFlip.loadFromHTML(document.querySelectorAll(".page"));
 
-/* ===== AUDIO ===== */
-const audio = document.getElementById("audio");
-const playBtn = document.getElementById("playBtn");
-const muteBtn = document.getElementById("muteBtn");
-const disc = document.getElementById("disc");
+  document.getElementById("next").onclick = () => pageFlip.flipNext();
+  document.getElementById("prev").onclick = () => pageFlip.flipPrev();
 
-let playing = false;
+  /* ===== AUDIO ===== */
+  const audio = document.getElementById("audio");
+  const playBtn = document.getElementById("playBtn");
+  const muteBtn = document.getElementById("muteBtn");
+  const disc = document.getElementById("disc");
 
-playBtn.addEventListener("click", () => {
-  if (!playing) {
-    audio.play();
-    disc.classList.add("spin");
-    playBtn.textContent = "⏸️";
-    playing = true;
-  } else {
-    audio.pause();
-    disc.classList.remove("spin");
-    playBtn.textContent = "▶️";
-    playing = false;
-  }
-});
+  let playing = false;
 
-muteBtn.addEventListener("click", () => {
-  audio.muted = !audio.muted;
-  muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+  playBtn.addEventListener("click", () => {
+    if (!playing) {
+      audio.play().catch(() => {});
+      disc.classList.add("spin");
+      playBtn.textContent = "⏸️";
+      playing = true;
+    } else {
+      audio.pause();
+      disc.classList.remove("spin");
+      playBtn.textContent = "▶️";
+      playing = false;
+    }
+  });
+
+  muteBtn.addEventListener("click", () => {
+    audio.muted = !audio.muted;
+    muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+  });
+
 });
