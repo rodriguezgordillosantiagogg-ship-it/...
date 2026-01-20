@@ -7,13 +7,15 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- Turn.js -->
   <script src="turn.min.js"></script>
 </head>
 <body>
+
+  <!-- ACTIVAR AUDIO -->
+  <div id="activar">
+    <div class="mensaje">Toca una vez la pantalla para comenzar 🎶</div>
+  </div>
 
   <!-- Audio -->
   <audio id="musica" src="musica.mp3" loop></audio>
@@ -21,7 +23,7 @@
   <!-- Libro -->
   <div id="book">
     <div class="page portada">
-      <img src="portada.jpg" alt="Portada">
+      <img src="portada.jpg">
     </div>
     <div class="page">Página 1</div>
     <div class="page">Página 2</div>
