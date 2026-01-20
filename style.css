@@ -10,19 +10,16 @@ body {
   width: 400px;
   height: 500px;
   margin: 0 auto;
+  position: relative; /* 👈 CLAVE */
 }
 
-/* CADA PÁGINA */
+/* ⚠️ NO FLEX, NO WIDTH EXTRA */
 .page {
-  width: 400px;
-  height: 500px;
   background: white;
   border: 1px solid #000;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 2em;
+  text-align: center;
+  line-height: 500px; /* centra el texto vertical */
 }
 
 .controls {
