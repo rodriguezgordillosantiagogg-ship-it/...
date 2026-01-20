@@ -1,86 +1,24 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #e6e6e6;
-  font-family: 'Baloo 2', sans-serif;
-  overflow: hidden;
-}
-
-/* ACTIVAR AUDIO */
-#activar {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.mensaje {
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  padding: 20px;
-}
-
-/* LIBRO */
-#book {
-  margin: auto;
-  width: 100%;
-  max-width: 900px;
-  height: 550px;
-}
-
-/* PÁGINAS */
-.page {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: white;
-  overflow: hidden;
-}
-
-.page img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  z-index: 1;
-}
-
-/* PORTADA */
-.portada img {
-  object-fit: cover;
-}
-
-/* TEXTO EN PÁGINAS 2, 3, 4 */
 .texto-superpuesto {
   position: absolute;
   z-index: 2;
-  top: 10%;
-  left: 8%;
-  right: 8%;
+  top: 50%;                
+  left: 50%;               
+  transform: translate(-50%, -50%); 
   color: black;
   font-size: 18px;
   line-height: 1.6;
-  text-align: justify;
+  text-align: center;       
   font-family: 'Baloo 2', sans-serif;
+  max-width: 80%;           
 }
 
 /* FRASE FINAL EN PÁGINA 5 */
 .frase-central {
   position: absolute;
   z-index: 2;
-  top: 40%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -40%);
+  transform: translate(-50%, -50%);
   text-align: center;
   max-width: 80%;
 }
@@ -90,15 +28,4 @@ body {
   font-weight: bold;
   color: #2c3e50;
   font-family: 'Baloo 2', sans-serif;
-}
-
-/* STICKER EN PÁGINA 6 */
-.imagen-superpuesta {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: auto;
 }
