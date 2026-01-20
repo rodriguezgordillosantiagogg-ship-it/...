@@ -6,13 +6,13 @@ function configLibro() {
     return {
       width: w * 0.9,
       height: h * 0.7,
-      display: "single"
+      display: "single" // en móviles se ve una sola página
     };
   } else {
     return {
       width: 900,
       height: 550,
-      display: "double"
+      display: "double" // en PC se ven dos páginas
     };
   }
 }
@@ -46,7 +46,7 @@ $(document).ready(function () {
     }
   });
 
-  // ACTIVAR MÚSICA (GARANTIZADO)
+  // ACTIVAR MÚSICA
   $("#activar").on("click touchstart", function () {
     let musica = document.getElementById("musica");
     musica.volume = 0.7;
