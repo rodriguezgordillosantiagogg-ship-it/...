@@ -1,53 +1,77 @@
-function configLibro() {
-  let w = window.innerWidth;
-  let h = window.innerHeight;
-
-  if (w < 768) {
-    return {
-      width: w,
-      height: h,
-      display: "single"
-    };
-  } else {
-    return {
-      width: 900,
-      height: 550,
-      display: "double"
-    };
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-$(document).ready(function () {
-  let cfg = configLibro();
+body {
+  background: #e6e6e6;
+  font-family: 'Gelasio', serif;
+  overflow: hidden;
+}
 
-  $("#book").turn({
-    width: cfg.width,
-    height: cfg.height,
-    display: cfg.display,
-    autoCenter: true
-  });
+/* ACTIVAR AUDIO */
+#activar {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
 
-  $(window).on("resize", function () {
-    let cfg = configLibro();
-    $("#book").turn("display", cfg.display);
-    $("#book").turn("size", cfg.width, cfg.height);
-  });
+.mensaje {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+}
 
-  $("#book").on("click touchstart", function (e) {
-    let x = e.pageX || e.originalEvent.touches[0].pageX;
-    let mitad = window.innerWidth / 2;
+/* LIBRO */
+#book {
+  margin: auto;
+  width: 100%;
+  max-width: 900px;
+  height: 550px;
+}
 
-    if (x > mitad) {
-      $("#book").turn("next");
-    } else {
-      $("#book").turn("previous");
-    }
-  });
+/* PÁGINAS */
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: black;
+  overflow: hidden;
+}
 
-  $("#activar").on("click touchstart", function () {
-    let musica = document.getElementById("musica");
-    musica.volume = 0.7;
-    musica.play();
-    $(this).fadeOut();
-  });
-});
+.page img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* PORTADA */
+.portada img {
+  object-fit: cover;
+}
+
+/* TEXTO SUPERPUESTO */
+.texto-superpuesto {
+  position: absolute;
+  z-index: 2;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  color: white;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: justify;
+  background: rgba(0,0,0,0.6);
+  padding: 15px;
+  border-radius: 8px;
+}
