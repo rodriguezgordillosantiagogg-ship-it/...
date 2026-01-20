@@ -22,7 +22,7 @@ body {
 }
 
 .mensaje {
-  color: white;
+  color: #ffffff;
   font-size: 20px;
   text-align: center;
   padding: 20px;
@@ -41,14 +41,13 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  background: white;
+  background: #ffffff;
   overflow: hidden;
 }
 
 .page img {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -60,7 +59,7 @@ body {
   object-fit: cover;
 }
 
-/* TEXTO CENTRADO EN PÁGINAS 2, 3, 4 */
+/* TEXTO CENTRADO — SIEMPRE NEGRO */
 .texto-superpuesto {
   position: absolute;
   z-index: 2;
@@ -69,7 +68,7 @@ body {
   transform: translate(-50%, -50%);
   width: 84%;
   max-width: 600px;
-  color: black;
+  color: #000000 !important;
   font-size: 18px;
   line-height: 1.6;
   text-align: justify;
@@ -91,16 +90,19 @@ body {
   font-size: 36px;
   font-weight: bold;
   color: #2c3e50;
+  letter-spacing: 1px;
   font-family: 'Baloo 2', sans-serif;
 }
 
-/* STICKER EN PÁGINA 6 */
+/* STICKER — PÁGINA 6 (CENTRADO Y VISIBLE) */
 .imagen-superpuesta {
   position: absolute;
-  z-index: 2;
+  z-index: 3; /* 🔑 por encima de la imagen */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
+  width: 220px;
+  max-width: 60%;
   height: auto;
+  pointer-events: none;
 }
