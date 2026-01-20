@@ -1,78 +1,53 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Libro interactivo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+function configLibro() {
+  let w = window.innerWidth;
+  let h = window.innerHeight;
 
-  <!-- Fuente Baloo 2 desde Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+  if (w < 768) {
+    return {
+      width: w,
+      height: h,
+      display: "single"
+    };
+  } else {
+    return {
+      width: 900,
+      height: 550,
+      display: "double"
+    };
+  }
+}
 
-  <link rel="stylesheet" href="style.css">
+$(document).ready(function () {
+  let cfg = configLibro();
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="turn.min.js"></script>
-</head>
-<body>
+  $("#book").turn({
+    width: cfg.width,
+    height: cfg.height,
+    display: cfg.display,
+    autoCenter: true
+  });
 
-  <!-- ACTIVAR AUDIO -->
-  <div id="activar">
-    <div class="mensaje">Toca una vez la pantalla para comenzar 🎶</div>
-  </div>
+  $(window).on("resize", function () {
+    let cfg = configLibro();
+    $("#book").turn("display", cfg.display);
+    $("#book").turn("size", cfg.width, cfg.height);
+  });
 
-  <!-- Audio -->
-  <audio id="musica" src="musica.mp3" loop></audio>
+  $("#book").on("click touchstart", function (e) {
+    let x = e.pageX || e.originalEvent.touches[0].pageX;
+    let mitad = window.innerWidth / 2;
 
-  <!-- Libro -->
-  <div id="book">
-    <!-- Portada -->
-    <div class="page portada">
-      <img src="portada.jpg" alt="Portada">
-    </div>
+    if (x > mitad) {
+      $("#book").turn("next");
+    } else {
+      $("#book").turn("previous");
+    }
+  });
 
-    <!-- Página 2 -->
-    <div class="page">
-      <img src="pagina1.jpg" alt="Página 1">
-      <div class="texto-superpuesto">
-        Podría decir muchas cosas, que esto, que aquello, que lo otro, 
-        pero creo que realmente no hay manera correcta de definir lo que significas para mí.
-      </div>
-    </div>
-
-    <!-- Página 3 -->
-    <div class="page">
-      <img src="pagina2.jpg" alt="Página 2">
-      <div class="texto-superpuesto">
-        Lo cual es chistoso, porque aunque parece poco tiempo 
-        (fue quizá hace medio año, tal vez más, tal vez menos que "empezó"), 
-        siempre es curioso cuando aun sin esperar nada, terminas queriendo todo, ¿no?
-      </div>
-    </div>
-
-    <!-- Página 4 -->
-    <div class="page">
-      <img src="pagina3.jpg" alt="Página 3">
-      <div class="texto-superpuesto">
-        Cuando incluso por cosas tan simples terminé queriendo verte sonreír, 
-        y sin saberlo, y tal vez sin siquiera necesitarlo,
-      </div>
-    </div>
-
-    <!-- Página 5: frase final enfocada -->
-    <div class="page">
-      <img src="pagina4.jpg" alt="Página 4">
-      <div class="frase-central">
-        <span class="enfasis">Te volviste el caos entre tanta monotonía</span>
-      </div>
-    </div>
-
-    <!-- Página 6: sticker centrado -->
-    <div class="page">
-      <img src="pagina5.jpg" alt="Página 5">
-      <img src="imagen-superpuesta.jpg" alt="Sticker" class="imagen-superpuesta">
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+  $("#activar").on("click touchstart", function () {
+    let musica = document.getElementById("musica");
+    musica.volume = 0.7;
+    musica.play();
+    $(this).fadeOut();
+  });
+});
