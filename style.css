@@ -1,24 +1,59 @@
-/* Texto centrado en páginas 2, 3 y 4 */
+body {
+  margin: 0;
+  background: #fdfdfd;
+  font-family: 'Baloo 2', sans-serif;
+}
+
+#activar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.mensaje {
+  font-size: 22px;
+  text-align: center;
+}
+
+#book {
+  margin: 20px auto;
+}
+
+.page {
+  position: relative;
+}
+
+.page img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Texto centrado */
 .texto-superpuesto {
   position: absolute;
   z-index: 2;
-  top: 50%;                
-  left: 50%;               
-  transform: translate(-50%, -50%); 
-  color: black;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #222;
   font-size: 18px;
   line-height: 1.6;
-  text-align: center;       /* centrado */
-  font-family: 'Baloo 2', sans-serif;
-  max-width: 80%;           
+  text-align: center;
+  max-width: 80%;
 }
 
-/* FRASE FINAL EN PÁGINA 5 */
+/* Frase final */
 .frase-central {
   position: absolute;
   z-index: 2;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   max-width: 80%;
@@ -28,15 +63,14 @@
   font-size: 36px;
   font-weight: bold;
   color: #2c3e50;
-  font-family: 'Baloo 2', sans-serif;
 }
 
-/* Sticker en página 6 */
+/* Sticker centrado */
 .imagen-superpuesta {
   position: absolute;
   z-index: 2;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   max-width: 60%;
+  height: auto;
 }
