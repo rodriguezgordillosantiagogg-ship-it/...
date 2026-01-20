@@ -20,6 +20,7 @@ function configLibro() {
 $(document).ready(function () {
   let cfg = configLibro();
 
+  // Inicializar el flipbook
   $("#book").turn({
     width: cfg.width,
     height: cfg.height,
@@ -27,27 +28,16 @@ $(document).ready(function () {
     autoCenter: true
   });
 
+  // Activar música al tocar la pantalla
+  $("#activar").on("click", function () {
+    $("#musica")[0].play();
+    $("#activar").hide();
+  });
+
+  // Recalcular si se cambia el tamaño de la ventana
   $(window).on("resize", function () {
-    let cfg = configLibro();
-    $("#book").turn("display", cfg.display);
-    $("#book").turn("size", cfg.width, cfg.height);
-  });
-
-  $("#book").on("click touchstart", function (e) {
-    let x = e.pageX || e.originalEvent.touches[0].pageX;
-    let mitad = window.innerWidth / 2;
-
-    if (x > mitad) {
-      $("#book").turn("next");
-    } else {
-      $("#book").turn("previous");
-    }
-  });
-
-  $("#activar").on("click touchstart", function () {
-    let musica = document.getElementById("musica");
-    musica.volume = 0.7;
-    musica.play();
-    $(this).fadeOut();
+    let newCfg = configLibro();
+    $("#book").turn("size", newCfg.width, newCfg.height);
+    $("#book").turn("display", newCfg.display);
   });
 });
