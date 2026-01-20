@@ -60,13 +60,15 @@ body {
   object-fit: cover;
 }
 
-/* TEXTO EN PÁGINAS 2, 3, 4 */
+/* TEXTO CENTRADO EN PÁGINAS 2, 3, 4 */
 .texto-superpuesto {
   position: absolute;
   z-index: 2;
-  top: 10%;
-  left: 8%;
-  right: 8%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 84%;
+  max-width: 600px;
   color: black;
   font-size: 18px;
   line-height: 1.6;
