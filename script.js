@@ -3,14 +3,12 @@ function configLibro() {
   let h = window.innerHeight;
 
   if (w < 768) {
-    // MÓVIL: una página
     return {
       width: w * 0.9,
       height: h * 0.7,
       display: "single"
     };
   } else {
-    // PC: doble página
     return {
       width: 900,
       height: 550,
@@ -26,18 +24,17 @@ $(document).ready(function () {
   $("#book").turn({
     width: cfg.width,
     height: cfg.height,
-    autoCenter: true,
-    display: cfg.display
+    display: cfg.display,
+    autoCenter: true
   });
 
-  // Reajustar al cambiar tamaño o rotar móvil
   $(window).on("resize", function () {
     let cfg = configLibro();
     $("#book").turn("display", cfg.display);
     $("#book").turn("size", cfg.width, cfg.height);
   });
 
-  // CLIC IZQUIERDA / DERECHA
+  // CLIC IZQ / DER
   $("#book").on("click touchstart", function (e) {
     let x = e.pageX || e.originalEvent.touches[0].pageX;
     let mitad = window.innerWidth / 2;
@@ -49,17 +46,12 @@ $(document).ready(function () {
     }
   });
 
-  // MÚSICA (se activa con el primer gesto)
-  let musica = document.getElementById("musica");
-  musica.volume = 0.7;
-
-  function iniciarMusica() {
-    musica.play().catch(() => {});
-    document.removeEventListener("click", iniciarMusica);
-    document.removeEventListener("touchstart", iniciarMusica);
-  }
-
-  document.addEventListener("click", iniciarMusica);
-  document.addEventListener("touchstart", iniciarMusica);
+  // ACTIVAR MÚSICA (GARANTIZADO)
+  $("#activar").on("click touchstart", function () {
+    let musica = document.getElementById("musica");
+    musica.volume = 0.7;
+    musica.play();
+    $(this).fadeOut();
+  });
 
 });
