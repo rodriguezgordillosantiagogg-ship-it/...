@@ -1,22 +1,18 @@
 body {
   margin: 0;
   padding: 20px;
-  background: #ddd;
+  background: #e0e0e0;
   font-family: Arial, sans-serif;
   text-align: center;
 }
 
-/* CONTENEDOR DEL LIBRO */
 #book {
-  width: 800px;
+  width: 400px;
   height: 500px;
   margin: 0 auto;
 }
 
-/* CADA PÁGINA */
 .page {
-  width: 400px;
-  height: 500px;
   background: white;
   border: 1px solid #000;
   font-size: 2em;
@@ -26,7 +22,6 @@ body {
   justify-content: center;
 }
 
-/* BOTONES */
 .controls {
   margin-top: 20px;
 }
@@ -34,4 +29,5 @@ body {
 button {
   padding: 10px 20px;
   font-size: 16px;
+  cursor: pointer;
 }
